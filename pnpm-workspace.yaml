@@ -1,0 +1,9 @@
+packages:
+  - apps/*
+  - packages/*
+onlyBuiltDependencies:
+  - '@clerk/shared'
+  - '@swc/core'
+  - esbuild
+  - protobufjs
+  - sharp
