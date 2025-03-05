@@ -59,24 +59,10 @@ export function describeImpl(): ListToolsResult {
             },
             query: {
               type: "string",
-              description: "The query to use while searching the files",
+              description: "The query to use while searching the files.",
             },
           },
           required: ["query", "accessToken"],
-        },
-      },
-      {
-        name: "greet",
-        description: "A very simple tool to provide a greeting",
-        inputSchema: {
-          type: "object",
-          properties: {
-            name: {
-              type: "string",
-              description: "the name of the person to greet",
-            },
-          },
-          required: ["name"],
         },
       },
     ],
