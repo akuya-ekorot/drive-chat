@@ -1,7 +1,8 @@
 import { ConfigProvider, Effect } from "effect";
 import { CallToolRequest, CallToolResult, ListToolsResult } from "./pdk";
 import { pipeline } from "./pipeline";
-import { DriveClient, GoogleDrive } from "./google-drive/services";
+import { GoogleDrive } from "./google-drive/google-drive";
+import { DriveClient } from "./google-drive/client";
 
 /**
  * Called when the tool is invoked.

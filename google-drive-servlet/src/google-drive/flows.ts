@@ -1,5 +1,5 @@
 import { flow, Match, Schema } from "effect";
-import { GoogleDrive } from "./services";
+import { GoogleDrive } from "./google-drive";
 import { SearchFilesParams } from "./schemas";
 
 export const handleSearchFiles = flow(
