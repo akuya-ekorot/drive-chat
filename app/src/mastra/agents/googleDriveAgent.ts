@@ -18,6 +18,8 @@ const tools = await getMcpxTools(session);
 
 export const googleDriveAgent = new Agent({
   name: "Google Drive Assistant",
+  model: google("gemini-2.0-flash-001"),
+  tools: tools,
   instructions: `
 You are a helpful Google Drive assistant that can help users with accessing and understanding files in their Google Drive.
 
@@ -97,6 +99,4 @@ Note on query syntax:
   - Date queries are in UTC timezone
   - Complex queries can impact performance
 `,
-  model: google("gemini-2.0-flash-001"),
-  tools: tools,
 });
