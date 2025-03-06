@@ -1,9 +1,18 @@
-import { flow, Match, Schema } from "effect";
+import { Match, Schema } from "effect";
 import { GoogleDrive } from "./google-drive";
-import { SearchFilesParams } from "./schemas";
+import { ExportFileParams, GetFileParams, SearchFilesParams } from "./schemas";
 
-export const handleSearchFiles = flow(
-  Match.when(Schema.is(Schema.asSchema(SearchFilesParams)), (a) =>
-    GoogleDrive.searchFiles(a),
-  ),
+export const handleListFile = Match.when(
+  Schema.is(Schema.asSchema(SearchFilesParams)),
+  (a) => GoogleDrive.listFiles(a),
+);
+
+export const handleGetFile = Match.when(
+  Schema.is(Schema.asSchema(GetFileParams)),
+  (a) => GoogleDrive.getFile(a),
+);
+
+export const handleExportFile = Match.when(
+  Schema.is(Schema.asSchema(ExportFileParams)),
+  (a) => GoogleDrive.exportFile(a),
 );

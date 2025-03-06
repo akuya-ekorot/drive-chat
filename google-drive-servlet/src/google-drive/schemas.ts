@@ -7,6 +7,7 @@ import { Schema } from "effect";
 // Request parameters for files.list endpoint
 export const ListFilesParams = Schema.Struct({
   query: Schema.String,
+  fields: Schema.String,
   pageSize: Schema.optional(Schema.Int),
   pageToken: Schema.optional(Schema.String),
   orderBy: Schema.optional(Schema.String),
@@ -21,6 +22,24 @@ export const ListFilesParams = Schema.Struct({
   includeLabels: Schema.optional(Schema.String),
 });
 export type ListFilesParams = typeof ListFilesParams.Type;
+
+export const GetParams = Schema.Struct({
+  fileId: Schema.String,
+  alt: Schema.Literal("media", "json").pipe(Schema.optional),
+  acknowledgeAbuse: Schema.Boolean.pipe(Schema.optional),
+  supportsAllDrives: Schema.Boolean.pipe(Schema.optional),
+  includePermissionsForView: Schema.Literal("published").pipe(Schema.optional),
+});
+export type GetParams = typeof GetParams.Type;
+
+export const ExportParams = Schema.Struct({
+  fileId: Schema.String,
+  mimeType: Schema.String,
+  acknowledgeAbuse: Schema.Boolean.pipe(Schema.optional),
+  supportsAllDrives: Schema.Boolean.pipe(Schema.optional),
+  includePermissionsForView: Schema.Literal("published").pipe(Schema.optional),
+});
+export type ExportParams = typeof ExportParams.Type;
 
 // =============================
 // Response Schemas
@@ -84,13 +103,33 @@ export type ListFilesParams = typeof ListFilesParams.Type;
 // Interface for the servlet parameter Structure
 export const SearchFilesParams = Schema.Struct({
   params: Schema.Struct({
-    name: Schema.Literal("search-files"),
+    name: Schema.Literal("list-files"),
     arguments: ListFilesParams.pipe(
       Schema.extend(Schema.Struct({ accessToken: Schema.String })),
     ),
   }),
 });
 export type SearchFilesParams = typeof SearchFilesParams.Type;
+
+export const GetFileParams = Schema.Struct({
+  params: Schema.Struct({
+    name: Schema.Literal("get-file"),
+    arguments: GetParams.pipe(
+      Schema.extend(Schema.Struct({ accessToken: Schema.String })),
+    ),
+  }),
+});
+export type GetFileParams = typeof GetFileParams.Type;
+
+export const ExportFileParams = Schema.Struct({
+  params: Schema.Struct({
+    name: Schema.Literal("export-file"),
+    arguments: ExportParams.pipe(
+      Schema.extend(Schema.Struct({ accessToken: Schema.String })),
+    ),
+  }),
+});
+export type ExportFileParams = typeof ExportFileParams.Type;
 
 // =============================
 // Response Model for Servlet

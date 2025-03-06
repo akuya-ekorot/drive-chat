@@ -1,5 +1,9 @@
 import { Effect } from "effect";
-import type { SearchFilesParams } from "./schemas";
+import type {
+  ExportFileParams,
+  GetFileParams,
+  SearchFilesParams,
+} from "./schemas";
 import { DriveClient } from "./client";
 
 export class GoogleDrive extends Effect.Service<GoogleDrive>()("GoogleDrive", {
@@ -7,7 +11,9 @@ export class GoogleDrive extends Effect.Service<GoogleDrive>()("GoogleDrive", {
     const drive = yield* DriveClient;
 
     return {
-      searchFiles: (a: SearchFilesParams) => drive.list(a.params.arguments),
+      listFiles: (a: SearchFilesParams) => drive.list(a.params.arguments),
+      getFile: (a: GetFileParams) => drive.get(a.params.arguments),
+      exportFile: (a: ExportFileParams) => drive.export(a.params.arguments),
     };
   }),
   accessors: true,

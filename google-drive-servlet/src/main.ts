@@ -48,7 +48,57 @@ export function describeImpl(): ListToolsResult {
   return {
     tools: [
       {
-        name: "search-files",
+        name: "export-file",
+        description:
+          "export file's content in acceptable mime-type. Works best for google workspace files",
+        inputSchema: {
+          type: "object",
+          properties: {
+            accessToken: {
+              type: "string",
+              description:
+                "The google access token to authenticate transactions",
+            },
+            fileId: {
+              type: "string",
+              description: "The fileId of the file to get",
+            },
+            mimeType: {
+              type: "string",
+              description:
+                "The mime type of the file. Prefer text mime types for easier operations",
+            },
+          },
+          required: ["fileId", "accessToken", "mimeType"],
+        },
+      },
+      {
+        name: "get-file",
+        description:
+          "get file's blob data. Works best for non-google workspace files",
+        inputSchema: {
+          type: "object",
+          properties: {
+            accessToken: {
+              type: "string",
+              description:
+                "The google access token to authenticate transactions",
+            },
+            fileId: {
+              type: "string",
+              description: "The fileId of the file to get",
+            },
+            alt: {
+              type: "string",
+              description:
+                "Alt type to be used in the query. Use the default media",
+            },
+          },
+          required: ["fileId", "accessToken"],
+        },
+      },
+      {
+        name: "list-files",
         description: "Search Google Drive files for the user",
         inputSchema: {
           type: "object",
@@ -62,8 +112,13 @@ export function describeImpl(): ListToolsResult {
               type: "string",
               description: "The query to use while searching the files.",
             },
+            fields: {
+              type: "string",
+              description:
+                "The fields to return for the file. At the very least, include the file id, name, mime type and capabilities(canDownload). Here's an example of how to get the file fields: 'nextPageToken, files(id, name, capabilities(canDownload))'",
+            },
           },
-          required: ["query", "accessToken"],
+          required: ["query", "accessToken", "fields"],
         },
       },
     ],
