@@ -90,6 +90,7 @@ Note on query syntax:
     'folderID' in parents and trashed = false
   4. Find Google Docs or Sheets:
     (mimeType = 'application/vnd.google-apps.document' or mimeType = 'application/vnd.google-apps.spreadsheet') and trashed = false
+  5. When adding the fields parameter, make sure to wrap the parameters inside the name of the parent, e.g 'files(id, name, capabilities(canDownload))' 
 
   Important Considerations
   - All queries are case-insensitive
