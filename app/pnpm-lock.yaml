@@ -26,6 +26,9 @@ importers:
       '@clerk/nextjs':
         specifier: ^6.12.3
         version: 6.12.3(next@15.2.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@clerk/themes':
+        specifier: ^2.2.20
+        version: 2.2.20
       '@dylibso/json-schema-to-zod-openai':
         specifier: ^1.0.5
         version: 1.0.5
@@ -38,6 +41,9 @@ importers:
       '@mastra/core':
         specifier: 0.5.0-alpha.4
         version: 0.5.0-alpha.4(react@19.0.0)
+      '@mastra/mcp':
+        specifier: ^0.2.6
+        version: 0.2.6(react@19.0.0)
       '@mastra/memory':
         specifier: ^0.1.7
         version: 0.1.7(react@19.0.0)(zod@3.24.2)
@@ -65,6 +71,9 @@ importers:
       next:
         specifier: 15.2.0
         version: 15.2.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next-themes:
+        specifier: ^0.4.4
+        version: 0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -396,6 +405,10 @@ packages:
       react-dom:
         optional: true
 
+  '@clerk/themes@2.2.20':
+    resolution: {integrity: sha512-ck93Yjpef8LQLXbMuVHYYbbZK+iESGvboT0zvR4Z8vmSePiNpFCvKHpl22hVdUxUPum4QhocuuOYFqxJ2nVSyQ==}
+    engines: {node: '>=18.17.0'}
+
   '@clerk/types@4.47.0':
     resolution: {integrity: sha512-xB/gqMq6cq6/47ymKs0WaaxKEFPzlvbSgJTLFIfnPMnFSNwYE4WVgVh6geFx6qWr3z588JDDZkJskBHZlgPmQQ==}
     engines: {node: '>=18.17.0'}
@@ -702,6 +715,9 @@ packages:
   '@mastra/core@0.5.0-alpha.4':
     resolution: {integrity: sha512-jXwmi6V7fnLj2sySlBfgEV2Q/PuMFIA5SKzLVIVIW9g5otvqj3bpRjRD93orkB6+jVZ1pH80Rhq4m+KySUQNdg==}
     engines: {node: '>=20'}
+
+  '@mastra/mcp@0.2.6':
+    resolution: {integrity: sha512-aaVmhyp2INYmxhKzCw3sUANcAguzTM6E1JLDorwqnptMEko4/O3dCgw7mFsQ6awiyfMJt7lft+NPiLImYnr6rQ==}
 
   '@mastra/memory@0.1.7':
     resolution: {integrity: sha512-iSTDoku5jr0GTIaZH8ikLJLHtk6vTUTag0VWM4JhDrFvcLLXthczZquWcEKOHa2kNsvZwd3k6RhpRBIEQ8sbwQ==}
@@ -2375,6 +2391,9 @@ packages:
   date-fns@3.6.0:
     resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
 
+  date-fns@4.1.0:
+    resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
+
   dateformat@4.6.3:
     resolution: {integrity: sha512-2P0p0pFGzHS5EMnhdxQi7aJN+iMheud0UhG4dlE1DLAlvL8JHjJJTX/CSm4JXwV0Ka5nGk3zC5mcb5bUQUxxMA==}
 
@@ -3590,6 +3609,12 @@ packages:
   negotiator@1.0.0:
     resolution: {integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==}
     engines: {node: '>= 0.6'}
+
+  next-themes@0.4.4:
+    resolution: {integrity: sha512-LDQ2qIOJF0VnuVrrMSMLrWGjRMkq+0mpgl6e0juCLqdJ+oo8Q84JRWT6Wh11VDQKkMMe+dVzDKLWs5n87T+PkQ==}
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
 
   next@15.2.0:
     resolution: {integrity: sha512-VaiM7sZYX8KIAHBrRGSFytKknkrexNfGb8GlG6e93JqueCspuGte8i4ybn8z4ww1x3f2uzY4YpTaBEW4/hvsoQ==}
@@ -5237,6 +5262,11 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
+  '@clerk/themes@2.2.20':
+    dependencies:
+      '@clerk/types': 4.47.0
+      tslib: 2.4.1
+
   '@clerk/types@4.47.0':
     dependencies:
       csstype: 3.1.3
@@ -5587,6 +5617,20 @@ snapshots:
       radash: 12.1.0
       sift: 17.1.3
       xstate: 5.19.2
+      zod: 3.24.2
+    transitivePeerDependencies:
+      - aws-crt
+      - bufferutil
+      - encoding
+      - react
+      - supports-color
+      - utf-8-validate
+
+  '@mastra/mcp@0.2.6(react@19.0.0)':
+    dependencies:
+      '@mastra/core': 0.4.4(react@19.0.0)
+      '@modelcontextprotocol/sdk': 1.6.1
+      date-fns: 4.1.0
       zod: 3.24.2
     transitivePeerDependencies:
       - aws-crt
@@ -7605,6 +7649,8 @@ snapshots:
 
   date-fns@3.6.0: {}
 
+  date-fns@4.1.0: {}
+
   dateformat@4.6.3: {}
 
   debug@2.6.9:
@@ -9155,6 +9201,11 @@ snapshots:
   natural-compare@1.4.0: {}
 
   negotiator@1.0.0: {}
+
+  next-themes@0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   next@15.2.0(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:

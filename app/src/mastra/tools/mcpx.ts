@@ -92,8 +92,6 @@ export async function getMcpxTools(session: Session) {
             if (tokens.totalCount < 1) throw new Error('No tokens for user')
             const accessToken = tokens.data[0].token
 
-            console.log(mcpxTool)
-
             const response = await session.handleCallTool({
               method: "tools/call",
               params: {

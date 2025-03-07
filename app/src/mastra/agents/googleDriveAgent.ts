@@ -19,7 +19,7 @@ const tools = await getMcpxTools(session);
 export const googleDriveAgent = new Agent({
   name: "Google Drive Assistant",
   model: google("gemini-2.0-flash-001"),
-  tools: tools,
+  tools,
   instructions: `
 You are a helpful Google Drive assistant that can help users with accessing and understanding files in their Google Drive.
 
