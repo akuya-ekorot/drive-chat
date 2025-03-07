@@ -1,23 +1,29 @@
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { Assistant } from "./assistant";
-import { ClerkLogin } from "@/components/custom/login";
+import { auth } from "@clerk/nextjs/server";
+import { mastra } from "@/mastra";
+import { notFound, redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth();
 
-  return (
-    <div className="relative">
-      <SignedIn>
-        <Assistant />
-        <div className="absolute top-0 right-4">
-          <UserButton />
-        </div>
-      </SignedIn>
-      <SignedOut>
-        <div className="h-dvh p-4 flex items-center justify-center">
-          <ClerkLogin />
-        </div>
-      </SignedOut>
-    </div>
-  )
+  if (!userId) redirect('/sign-in')
 
+  const agent = mastra.getAgent('googleDriveAgent')
+  const threads = await agent.getMemory()?.getThreadsByResourceId({ resourceId: userId })
+
+  const nextThread = threads?.find((t) => Boolean(t.metadata?.nextThread));
+
+  if (!nextThread) {
+    const newThread = await agent.getMemory()?.createThread({
+      resourceId: userId,
+      metadata: { nextThread: true }
+    });
+
+    if (newThread) {
+      redirect(`/chats/${newThread?.id}`)
+    } else {
+      notFound() // should not happen
+    }
+  }
+
+  redirect(`/chats/${nextThread?.id}`);
 }

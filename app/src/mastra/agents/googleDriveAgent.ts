@@ -20,6 +20,7 @@ const tools = await getMcpxTools(session);
 export const googleDriveAgent = new Agent({
   name: "Google Drive Assistant",
   model: google("gemini-2.0-flash-001"),
+  //@ts-expect-error type mismatch
   memory,
   tools,
   instructions: `
