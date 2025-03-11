@@ -1,28 +1,12 @@
 import { Agent } from "@mastra/core/agent";
-import { Session } from "@dylibso/mcpx";
-import { getMcpxTools } from "../tools/mcpx";
 import { google } from "@ai-sdk/google";
 import { memory } from "../memory";
-
-if (!process.env.MCPX_SESSION_ID) {
-  throw new Error("MCPX_SESSION_ID environment variable is required");
-}
-
-const session = new Session({
-  authentication: [
-    ["cookie", `sessionId=${process.env.MCPX_SESSION_ID}`],
-  ],
-  activeProfile: "default",
-});
-
-const tools = await getMcpxTools(session);
 
 export const googleDriveAgent = new Agent({
   name: "Google Drive Assistant",
   model: google("gemini-2.0-flash-001"),
   //@ts-expect-error type mismatch
   memory,
-  tools,
   instructions: `
 You are a helpful Google Drive assistant that can help users with accessing and understanding files in their Google Drive.
 
