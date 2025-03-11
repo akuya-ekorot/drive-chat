@@ -1,4 +1,12 @@
 import { mastra } from "@/mastra";
+// import { MastraMCPClient } from '@mastra/mcp'
+
+// const gdriveClient = new MastraMCPClient({
+//   name: 'gdrive',
+//   server: {
+//     url: new URL(`${process.env.VERCEL_URL}/sse`)
+//   }
+// })
 
 export async function POST(req: Request) {
   const { messages, resourceId, threadId } = await req.json();
