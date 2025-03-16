@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "turbo": "^2.4.4"
+  },
+  "packageManager": "pnpm@10.6.3",
+  "scripts": {
+    "check-types": "turbo run check-types",
+    "build": "turbo run build"
+  }
+}

@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "mastra dev",
-    "build": "mastra build"
+    "build": "mastra build",
+    "check-types": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
