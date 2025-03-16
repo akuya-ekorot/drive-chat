@@ -1,5 +1,5 @@
 {
-  "name": "mcp-server",
+  "name": "@drive-chat/mcp-server",
   "version": "0.1.0",
   "private": true,
   "scripts": {
