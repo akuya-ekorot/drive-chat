@@ -14,6 +14,7 @@
   "dependencies": {
     "@ai-sdk/openai": "^1.2.5",
     "@mastra/core": "^0.6.0",
+    "@mastra/deployer-vercel": "^0.1.9",
     "mastra": "^0.3.1",
     "zod": "^3.24.2"
   },
