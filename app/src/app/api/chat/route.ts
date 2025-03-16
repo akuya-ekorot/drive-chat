@@ -1,55 +1,54 @@
 import { mastra } from "@/mastra";
-import { MastraMCPClient } from '@mastra/mcp'
+import { MCPConfiguration } from "@mastra/mcp";
 import { NextResponse } from "next/server";
 
-const url = new URL(process.env.MCP_SERVER_URL! + '/sse')
+export const mcp = new MCPConfiguration({
+  id: "googleDriveAgent",
+  servers: {
+    googleDrive: {
+      command: "npx",
+      args: ["-y", "@modelcontextprotocol/server-gdrive"],
+      env: {
+        ...process.env,
+        GDRIVE_OAUTH_PATH: process.env.GDRIVE_OAUTH_PATH!,
+        GDRIVE_CREDENTIALS_PATH: process.env.GDRIVE_CREDENTIALS_PATH!,
+      },
+    },
+  },
+});
 
 export async function POST(req: Request) {
-  const agent = mastra.getAgent('googleDriveAgent')
+  const agent = mastra.getAgent("googleDriveAgent");
 
   try {
-    const gdriveClient = new MastraMCPClient({
-      name: 'gdrive',
-      server: { url }
-    })
-
-
     try {
       const { messages, resourceId, threadId } = await req.json();
 
-      const thread = await agent.getMemory()?.getThreadById({ threadId })
+      const thread = await agent.getMemory()?.getThreadById({ threadId });
 
       if (thread) {
-        await agent.getMemory()?.saveThread({ thread: { ...thread, metadata: { ...(thread?.metadata ?? {}), nextThread: false } } })
+        await agent.getMemory()?.saveThread({
+          thread: {
+            ...thread,
+            metadata: { ...(thread?.metadata ?? {}), nextThread: false },
+          },
+        });
       }
 
-      await gdriveClient.connect();
-
-      process.on("exit", () => {
-        gdriveClient.disconnect();
+      const result = await agent.stream(messages ?? [], {
+        toolChoice: "auto",
+        // threadId,
+        // resourceId,
+        toolsets: await mcp.getToolsets(),
       });
 
-      const tools = await gdriveClient.tools();
-
-      console.dir({ tools })
-
-      const result = await agent.stream(messages ?? [], {
-        toolChoice: 'auto',
-        threadId,
-        resourceId,
-        toolsets: { gdrive: tools }
-      })
-
-      return result.toDataStreamResponse()
+      return result.toDataStreamResponse();
     } catch (error) {
-      console.error('issue', error)
-      return NextResponse.json(error, { status: 500 })
-    } finally {
-      gdriveClient.disconnect()
-      console.log('gdrive client disconnected')
+      console.dir({ error }, { depth: Infinity });
+      return NextResponse.json(error, { status: 500 });
     }
   } catch (e) {
-    console.error('mastra mcp init error', e)
-    return NextResponse.json(e, { status: 500 })
+    console.error("mastra mcp init error", e);
+    return NextResponse.json(e, { status: 500 });
   }
 }

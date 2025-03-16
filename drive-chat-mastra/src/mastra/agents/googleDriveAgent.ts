@@ -1,11 +1,14 @@
 import { Agent } from "@mastra/core/agent";
 import { google } from "@ai-sdk/google";
 import { memory } from "../memory";
+import { mcp } from "../mcp";
+
+const tools = await mcp.getTools();
 
 export const googleDriveAgent = new Agent({
   name: "Google Drive Assistant",
   model: google("gemini-2.0-flash-001"),
-  //@ts-expect-error type mismatch
+  tools,
   memory,
   instructions: `
 You are a helpful Google Drive assistant that can help users with accessing and understanding files in their Google Drive.
