@@ -1,6 +1,9 @@
 node_modules
 dist
+build
+.tsbuildinfo
 .turbo
 .mastra
 old
 .env*
+!.env.example

@@ -1,8 +1,7 @@
-import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse";
+import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import * as Effect from "effect/Effect";
 import * as Schema from "effect/Schema";
 import { ServerResponse, IncomingMessage } from "http";
-import { RedisService } from "./RedisService";
 import * as HashMap from "effect/HashMap";
 import { Match, Option } from "effect";
 

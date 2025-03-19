@@ -1,10 +1,17 @@
 {
-  "name": "scratch",
+  "name": "@drive-chat/mcp-server",
+  "description": "Google Drive MCP Server with SSE Transport",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akuya-ekorot/drive-chat"
+  },
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "dev": "node index.js"
+    "build": "pnpm build-esm && pnpm build-annotate && pnpm build-cjs && build-utils pack-v2",
+    "build-esm": "tsc -b tsconfig.build.json",
+    "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
+    "build-annotate": "babel build/esm --plugins annotate-pure-calls --out-dir build/esm --source-maps",
+    "start": "bun src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +21,7 @@
     "@effect/platform": "^0.79.2",
     "@effect/platform-node": "^0.75.2",
     "@modelcontextprotocol/sdk": "^1.7.0",
+    "babel-plugin-annotate-pure-calls": "^0.5.0",
     "dotenv": "^16.4.7",
     "effect": "^3.13.11",
     "express": "^4.21.2",
@@ -22,7 +30,26 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.10",
+    "@babel/plugin-transform-export-namespace-from": "^7.25.9",
+    "@babel/plugin-transform-modules-commonjs": "^7.26.3",
+    "@effect/build-utils": "^0.7.9",
+    "@effect/eslint-plugin": "^0.3.0",
+    "@effect/language-service": "^0.4.0",
+    "@eslint/compat": "^1.2.7",
+    "@eslint/eslintrc": "^3",
+    "@eslint/js": "^9.22.0",
     "@types/node": "^20",
+    "@typescript-eslint/eslint-plugin": "^8.26.1",
+    "@typescript-eslint/parser": "^8.26.1",
+    "eslint": "^9",
+    "eslint-import-resolver-typescript": "^4.2.2",
+    "eslint-plugin-codegen": "^0.30.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-sort-destructure-keys": "^2.0.0",
+    "tsx": "^4.19.3",
     "typescript": "^5"
   }
 }

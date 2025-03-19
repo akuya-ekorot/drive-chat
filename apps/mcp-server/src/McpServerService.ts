@@ -56,7 +56,7 @@ const initServer = () =>
       {},
       async () => {
         try {
-          const user = await drive?.about.get({ fields: "user" });
+          const user = await drive.about.get({ fields: "user" });
           return {
             content: [
               {
@@ -85,10 +85,25 @@ const initServer = () =>
       ListFilesSchema.shape,
       async (args) => {
         try {
-          const res = await drive?.files.list(args);
+          // Create a params object with properly typed properties
+          const params: {
+            fields?: string;
+            q?: string;
+            pageSize?: number;
+            pageToken?: string;
+            orderBy?: string;
+          } = {};
 
+          // Only add properties that are defined
+          if (args.fields !== undefined) params.fields = args.fields;
+          if (args.q !== undefined) params.q = args.q;
+          if (args.pageSize !== undefined) params.pageSize = args.pageSize;
+          if (args.pageToken !== undefined) params.pageToken = args.pageToken;
+          if (args.orderBy !== undefined) params.orderBy = args.orderBy;
+
+          const res = await drive.files.list(params);
           const formattedFiles =
-            res?.data.files?.map((file) => ({
+            res.data.files?.map((file) => ({
               id: file.id,
               name: file.name,
               mimeType: file.mimeType,
@@ -105,7 +120,7 @@ const initServer = () =>
                 text: JSON.stringify(
                   {
                     files: formattedFiles,
-                    nextPageToken: res?.data.nextPageToken,
+                    nextPageToken: res.data.nextPageToken,
                   },
                   null,
                   2,
@@ -133,13 +148,13 @@ const initServer = () =>
       ExportFileSchema.shape,
       async (args) => {
         try {
-          const fileMetadata = await drive?.files.get({
+          const fileMetadata = await drive.files.get({
             fileId: args.fileId,
             fields: "mimeType,name",
           });
 
-          const fileMimeType = fileMetadata?.data.mimeType;
-          const fileName = fileMetadata?.data.name;
+          const fileMimeType = fileMetadata.data.mimeType;
+          const fileName = fileMetadata.data.name;
 
           const suggestedMimeType = getSuggestedExportMimeType(
             fileMimeType ?? "",
@@ -147,12 +162,12 @@ const initServer = () =>
 
           const exportMimeType = args.mimeType ?? suggestedMimeType;
 
-          const res = await drive?.files.export({
+          const res = await drive.files.export({
             fileId: args.fileId,
             mimeType: exportMimeType,
           });
 
-          if (typeof res?.data === "string" || res?.data instanceof Buffer) {
+          if (typeof res.data === "string" || res.data instanceof Buffer) {
             const textData =
               res.data instanceof Buffer
                 ? res.data.toString("utf-8")
@@ -171,7 +186,7 @@ const initServer = () =>
               content: [
                 {
                   type: "text",
-                  text: `Exported "${fileName}" as ${exportMimeType}:\n\n${JSON.stringify(res?.data, null, 2)}`,
+                  text: `Exported "${fileName}" as ${exportMimeType}:\n\n${JSON.stringify(res.data, null, 2)}`,
                 },
               ],
             };
@@ -196,19 +211,19 @@ const initServer = () =>
       GetFileSchema.shape,
       async (args) => {
         try {
-          const metadata = await drive?.files.get({
+          const metadata = await drive.files.get({
             fileId: args.fileId,
             fields: "mimeType,name,size",
           });
 
           const fileMimeType =
             args.mimeType ??
-            metadata?.data.mimeType ??
+            metadata.data.mimeType ??
             "application/octet-stream";
 
-          const fileName = metadata?.data.name;
+          const fileName = metadata.data.name;
 
-          const file = await drive?.files.get(
+          const file = await drive.files.get(
             {
               fileId: args.fileId,
               alt: "media",
@@ -219,9 +234,9 @@ const initServer = () =>
           );
 
           const buffer =
-            file?.data instanceof Buffer
+            file.data instanceof Buffer
               ? file.data
-              : Buffer.from(file?.data as any);
+              : Buffer.from(file.data as any);
 
           const blob = buffer.toString("base64");
 

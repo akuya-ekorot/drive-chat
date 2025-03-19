@@ -3,6 +3,7 @@ packages:
   - packages/*
 onlyBuiltDependencies:
   - '@clerk/shared'
+  - '@parcel/watcher'
   - '@swc/core'
   - esbuild
   - protobufjs

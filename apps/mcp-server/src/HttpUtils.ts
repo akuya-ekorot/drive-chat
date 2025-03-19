@@ -1,4 +1,4 @@
-import { IncomingMessage, ServerResponse } from "node:http";
+import { IncomingMessage } from "node:http";
 import { Socket } from "node:net";
 import { Readable } from "node:stream";
 

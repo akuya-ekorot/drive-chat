@@ -1,7 +1,6 @@
 import * as Layer from "effect/Layer";
 import * as Schema from "effect/Schema";
 import { createServer } from "node:http";
-import * as Console from "effect/Console";
 import { DriveError, McpTaggedError } from "./Errors";
 import { McpRepository } from "./McpRepository";
 import * as HttpApi from "@effect/platform/HttpApi";
