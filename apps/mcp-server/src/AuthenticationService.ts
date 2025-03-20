@@ -1,4 +1,4 @@
-import { Context, Layer, Schema } from "effect";
+import { Context, Layer, Redacted, Schema } from "effect";
 import * as Effect from "effect/Effect";
 import { HttpApiMiddleware, HttpApiSecurity } from "@effect/platform";
 import { TokenError } from "./Errors";
@@ -29,6 +29,9 @@ export const AuthenticationMiddlewareLive = Layer.effect(
     return {
       bearer: (token) =>
         Effect.gen(function* () {
+          yield* Effect.log(
+            `Bearer token received: ${token.pipe(Redacted.value)}`,
+          );
           return new AccessToken({ token });
         }),
     };

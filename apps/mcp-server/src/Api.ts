@@ -17,13 +17,14 @@ import {
 } from "./AuthenticationService";
 import { RedisError, RedisService } from "./RedisService";
 import { Effect } from "effect";
+import * as HttpMiddleware from "@effect/platform/HttpMiddleware";
 
 // Endpoints
 const SseEndpoint = HttpApiEndpoint.get("sse")`/sse`
   .addError(McpTaggedError)
   .addError(DriveError)
   .addError(RedisError)
-  .addSuccess(Schema.Void);
+  .addSuccess(Schema.Void, { status: 200 });
 
 const HandleMessageUrlParams = Schema.Struct({ sessionId: Schema.String });
 export type HandleMessageUrlParams = typeof HandleMessageUrlParams.Type;
@@ -33,7 +34,7 @@ const MessagesEndpoint = HttpApiEndpoint.post("messages")`/messages`
   .addError(McpTaggedError)
   .addError(RedisError)
   .setUrlParams(HandleMessageUrlParams)
-  .addSuccess(Schema.Void);
+  .addSuccess(Schema.Void, { status: 200 });
 
 // Group
 const McpGroup = HttpApiGroup.make("McpGroup")
@@ -62,7 +63,7 @@ const McpGroupLive = HttpApiBuilder.group(McpApi, "McpGroup", (handlers) =>
 const McpApiLive = HttpApiBuilder.api(McpApi).pipe(Layer.provide(McpGroupLive));
 
 // Live Server
-export const ServerLive = HttpApiBuilder.serve().pipe(
+export const ServerLive = HttpApiBuilder.serve(HttpMiddleware.logger).pipe(
   Layer.provide(McpApiLive),
   Layer.tap(() => Effect.log("Server started")),
   Layer.provide(NodeHttpServer.layer(createServer, { port: 8080 })),

@@ -65,6 +65,8 @@ const handleMessages = ({ urlParams }: { urlParams: HandleMessageUrlParams }) =>
         new McpTaggedError({ message: "Failed to read request body" }),
     });
 
+    yield* Effect.log(`Received request: ${JSON.stringify(body, null, 2)}`);
+
     yield* RedisService.publish(
       `requests:${transport.sessionId}`,
       JSON.stringify({
