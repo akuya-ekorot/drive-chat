@@ -1,0 +1,239 @@
+.
+├── LICENSE
+├── README.md
+├── build
+│   ├── cjs
+│   │   ├── Api.js
+│   │   ├── Api.js.map
+│   │   ├── AuthenticationService.js
+│   │   ├── AuthenticationService.js.map
+│   │   ├── Errors.js
+│   │   ├── Errors.js.map
+│   │   ├── GoogleDriveService.js
+│   │   ├── GoogleDriveService.js.map
+│   │   ├── HttpUtils.js
+│   │   ├── HttpUtils.js.map
+│   │   ├── McpRepository.js
+│   │   ├── McpRepository.js.map
+│   │   ├── McpServerService.js
+│   │   ├── McpServerService.js.map
+│   │   ├── McpTransportService.js
+│   │   ├── McpTransportService.js.map
+│   │   ├── RedisService.js
+│   │   ├── RedisService.js.map
+│   │   ├── Schemas.js
+│   │   ├── Schemas.js.map
+│   │   ├── index.js
+│   │   └── index.js.map
+│   ├── dts
+│   │   ├── Api.d.ts
+│   │   ├── Api.d.ts.map
+│   │   ├── AuthenticationService.d.ts
+│   │   ├── AuthenticationService.d.ts.map
+│   │   ├── Errors.d.ts
+│   │   ├── Errors.d.ts.map
+│   │   ├── GoogleDriveService.d.ts
+│   │   ├── GoogleDriveService.d.ts.map
+│   │   ├── HttpUtils.d.ts
+│   │   ├── HttpUtils.d.ts.map
+│   │   ├── McpRepository.d.ts
+│   │   ├── McpRepository.d.ts.map
+│   │   ├── McpServerService.d.ts
+│   │   ├── McpServerService.d.ts.map
+│   │   ├── McpTransportService.d.ts
+│   │   ├── McpTransportService.d.ts.map
+│   │   ├── RedisService.d.ts
+│   │   ├── RedisService.d.ts.map
+│   │   ├── Schemas.d.ts
+│   │   ├── Schemas.d.ts.map
+│   │   ├── index.d.ts
+│   │   └── index.d.ts.map
+│   └── esm
+│       ├── Api.js
+│       ├── Api.js.map
+│       ├── AuthenticationService.js
+│       ├── AuthenticationService.js.map
+│       ├── Errors.js
+│       ├── Errors.js.map
+│       ├── GoogleDriveService.js
+│       ├── GoogleDriveService.js.map
+│       ├── HttpUtils.js
+│       ├── HttpUtils.js.map
+│       ├── McpRepository.js
+│       ├── McpRepository.js.map
+│       ├── McpServerService.js
+│       ├── McpServerService.js.map
+│       ├── McpTransportService.js
+│       ├── McpTransportService.js.map
+│       ├── RedisService.js
+│       ├── RedisService.js.map
+│       ├── Schemas.js
+│       ├── Schemas.js.map
+│       ├── index.js
+│       └── index.js.map
+├── dist
+│   ├── Api
+│   │   └── package.json
+│   ├── AuthenticationService
+│   │   └── package.json
+│   ├── Errors
+│   │   └── package.json
+│   ├── GoogleDriveService
+│   │   └── package.json
+│   ├── HttpUtils
+│   │   └── package.json
+│   ├── LICENSE
+│   ├── McpRepository
+│   │   └── package.json
+│   ├── McpServerService
+│   │   └── package.json
+│   ├── McpTransportService
+│   │   └── package.json
+│   ├── README.md
+│   ├── RedisService
+│   │   └── package.json
+│   ├── Schemas
+│   │   └── package.json
+│   ├── dist
+│   │   ├── cjs
+│   │   │   ├── Api.js
+│   │   │   ├── Api.js.map
+│   │   │   ├── AuthenticationService.js
+│   │   │   ├── AuthenticationService.js.map
+│   │   │   ├── Errors.js
+│   │   │   ├── Errors.js.map
+│   │   │   ├── GoogleDriveService.js
+│   │   │   ├── GoogleDriveService.js.map
+│   │   │   ├── HttpUtils.js
+│   │   │   ├── HttpUtils.js.map
+│   │   │   ├── McpRepository.js
+│   │   │   ├── McpRepository.js.map
+│   │   │   ├── McpServerService.js
+│   │   │   ├── McpServerService.js.map
+│   │   │   ├── McpTransportService.js
+│   │   │   ├── McpTransportService.js.map
+│   │   │   ├── RedisService.js
+│   │   │   ├── RedisService.js.map
+│   │   │   ├── Schemas.js
+│   │   │   ├── Schemas.js.map
+│   │   │   ├── index.js
+│   │   │   └── index.js.map
+│   │   ├── dts
+│   │   │   ├── Api.d.ts
+│   │   │   ├── Api.d.ts.map
+│   │   │   ├── AuthenticationService.d.ts
+│   │   │   ├── AuthenticationService.d.ts.map
+│   │   │   ├── Errors.d.ts
+│   │   │   ├── Errors.d.ts.map
+│   │   │   ├── GoogleDriveService.d.ts
+│   │   │   ├── GoogleDriveService.d.ts.map
+│   │   │   ├── HttpUtils.d.ts
+│   │   │   ├── HttpUtils.d.ts.map
+│   │   │   ├── McpRepository.d.ts
+│   │   │   ├── McpRepository.d.ts.map
+│   │   │   ├── McpServerService.d.ts
+│   │   │   ├── McpServerService.d.ts.map
+│   │   │   ├── McpTransportService.d.ts
+│   │   │   ├── McpTransportService.d.ts.map
+│   │   │   ├── RedisService.d.ts
+│   │   │   ├── RedisService.d.ts.map
+│   │   │   ├── Schemas.d.ts
+│   │   │   ├── Schemas.d.ts.map
+│   │   │   ├── index.d.ts
+│   │   │   └── index.d.ts.map
+│   │   └── esm
+│   │       ├── Api.js
+│   │       ├── Api.js.map
+│   │       ├── AuthenticationService.js
+│   │       ├── AuthenticationService.js.map
+│   │       ├── Errors.js
+│   │       ├── Errors.js.map
+│   │       ├── GoogleDriveService.js
+│   │       ├── GoogleDriveService.js.map
+│   │       ├── HttpUtils.js
+│   │       ├── HttpUtils.js.map
+│   │       ├── McpRepository.js
+│   │       ├── McpRepository.js.map
+│   │       ├── McpServerService.js
+│   │       ├── McpServerService.js.map
+│   │       ├── McpTransportService.js
+│   │       ├── McpTransportService.js.map
+│   │       ├── RedisService.js
+│   │       ├── RedisService.js.map
+│   │       ├── Schemas.js
+│   │       ├── Schemas.js.map
+│   │       ├── index.js
+│   │       ├── index.js.map
+│   │       └── package.json
+│   ├── package.json
+│   └── src
+│       ├── Api.ts
+│       ├── AuthenticationService.ts
+│       ├── Errors.ts
+│       ├── GoogleDriveService.ts
+│       ├── HttpUtils.ts
+│       ├── McpRepository.ts
+│       ├── McpServerService.ts
+│       ├── McpTransportService.ts
+│       ├── RedisService.ts
+│       ├── Schemas.ts
+│       └── index.ts
+├── eslint.config.mjs
+├── node_modules
+│   ├── @babel
+│   │   ├── cli -> ../../../../node_modules/.pnpm/@babel+cli@7.26.4_@babel+core@7.26.10/node_modules/@babel/cli
+│   │   ├── core -> ../../../../node_modules/.pnpm/@babel+core@7.26.10/node_modules/@babel/core
+│   │   ├── plugin-transform-export-namespace-from -> ../../../../node_modules/.pnpm/@babel+plugin-transform-export-namespace-from@7.25.9_@babel+core@7.26.10/node_modules/@babel/plugin-transform-export-namespace-from
+│   │   └── plugin-transform-modules-commonjs -> ../../../../node_modules/.pnpm/@babel+plugin-transform-modules-commonjs@7.26.3_@babel+core@7.26.10/node_modules/@babel/plugin-transform-modules-commonjs
+│   ├── @effect
+│   │   ├── build-utils -> ../../../../node_modules/.pnpm/@effect+build-utils@0.7.9/node_modules/@effect/build-utils
+│   │   ├── eslint-plugin -> ../../../../node_modules/.pnpm/@effect+eslint-plugin@0.3.0/node_modules/@effect/eslint-plugin
+│   │   ├── language-service -> ../../../../node_modules/.pnpm/@effect+language-service@0.4.0/node_modules/@effect/language-service
+│   │   ├── platform -> ../../../../node_modules/.pnpm/@effect+platform@0.79.2_effect@3.13.11/node_modules/@effect/platform
+│   │   └── platform-node -> ../../../../node_modules/.pnpm/@effect+platform-node@0.75.2_@effect+platform@0.79.2_effect@3.13.11__effect@3.13.11/node_modules/@effect/platform-node
+│   ├── @eslint
+│   │   ├── compat -> ../../../../node_modules/.pnpm/@eslint+compat@1.2.7_eslint@9.22.0_jiti@2.4.2_/node_modules/@eslint/compat
+│   │   ├── eslintrc -> ../../../../node_modules/.pnpm/@eslint+eslintrc@3.3.0/node_modules/@eslint/eslintrc
+│   │   └── js -> ../../../../node_modules/.pnpm/@eslint+js@9.22.0/node_modules/@eslint/js
+│   ├── @modelcontextprotocol
+│   │   └── sdk -> ../../../../node_modules/.pnpm/@modelcontextprotocol+sdk@1.7.0/node_modules/@modelcontextprotocol/sdk
+│   ├── @types
+│   │   └── node -> ../../../../node_modules/.pnpm/@types+node@20.17.24/node_modules/@types/node
+│   ├── @typescript-eslint
+│   │   ├── eslint-plugin -> ../../../../node_modules/.pnpm/@typescript-eslint+eslint-plugin@8.26.1_@typescript-eslint+parser@8.26.1_eslint@9.22.0__bbc8f9080a44647a3e7c9b71962f7a26/node_modules/@typescript-eslint/eslint-plugin
+│   │   └── parser -> ../../../../node_modules/.pnpm/@typescript-eslint+parser@8.26.1_eslint@9.22.0_jiti@2.4.2__typescript@5.8.2/node_modules/@typescript-eslint/parser
+│   ├── babel-plugin-annotate-pure-calls -> ../../../node_modules/.pnpm/babel-plugin-annotate-pure-calls@0.5.0_@babel+core@7.26.10/node_modules/babel-plugin-annotate-pure-calls
+│   ├── dotenv -> ../../../node_modules/.pnpm/dotenv@16.4.7/node_modules/dotenv
+│   ├── effect -> ../../../node_modules/.pnpm/effect@3.13.11/node_modules/effect
+│   ├── eslint -> ../../../node_modules/.pnpm/eslint@9.22.0_jiti@2.4.2/node_modules/eslint
+│   ├── eslint-import-resolver-typescript -> ../../../node_modules/.pnpm/eslint-import-resolver-typescript@4.2.2_eslint-plugin-import@2.31.0_eslint@9.22.0_jiti@2.4.2__is-bun-module@1.3.0/node_modules/eslint-import-resolver-typescript
+│   ├── eslint-plugin-codegen -> ../../../node_modules/.pnpm/eslint-plugin-codegen@0.30.0_eslint@9.22.0_jiti@2.4.2_/node_modules/eslint-plugin-codegen
+│   ├── eslint-plugin-import -> ../../../node_modules/.pnpm/eslint-plugin-import@2.31.0_@typescript-eslint+parser@8.26.1_eslint@9.22.0_jiti@2.4.2___bdb231cac7ba4aa8c8b84d66b66b8cc5/node_modules/eslint-plugin-import
+│   ├── eslint-plugin-simple-import-sort -> ../../../node_modules/.pnpm/eslint-plugin-simple-import-sort@12.1.1_eslint@9.22.0_jiti@2.4.2_/node_modules/eslint-plugin-simple-import-sort
+│   ├── eslint-plugin-sort-destructure-keys -> ../../../node_modules/.pnpm/eslint-plugin-sort-destructure-keys@2.0.0_eslint@9.22.0_jiti@2.4.2_/node_modules/eslint-plugin-sort-destructure-keys
+│   ├── express -> ../../../node_modules/.pnpm/express@4.21.2/node_modules/express
+│   ├── googleapis -> ../../../node_modules/.pnpm/googleapis@146.0.0/node_modules/googleapis
+│   ├── redis -> ../../../node_modules/.pnpm/redis@4.7.0/node_modules/redis
+│   ├── tsx -> ../../../node_modules/.pnpm/tsx@4.19.3/node_modules/tsx
+│   ├── typescript -> ../../../node_modules/.pnpm/typescript@5.8.2/node_modules/typescript
+│   └── zod -> ../../../node_modules/.pnpm/zod@3.24.2/node_modules/zod
+├── package.json
+├── src
+│   ├── Api.ts
+│   ├── AuthenticationService.ts
+│   ├── Errors.ts
+│   ├── GoogleDriveService.ts
+│   ├── HttpUtils.ts
+│   ├── McpRepository.ts
+│   ├── McpServerService.ts
+│   ├── McpTransportService.ts
+│   ├── RedisService.ts
+│   ├── Schemas.ts
+│   └── index.ts
+├── tree.txt
+├── tsconfig.base.json
+├── tsconfig.build.json
+├── tsconfig.json
+└── tsconfig.src.json
+
+60 directories, 177 files
