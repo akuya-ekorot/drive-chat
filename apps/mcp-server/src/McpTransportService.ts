@@ -1,7 +1,6 @@
 import * as Match from "effect/Match";
 import * as Effect from "effect/Effect";
 import * as Schema from "effect/Schema";
-// import * as Logger from "effect/Logger";
 import * as Option from "effect/Option";
 import * as HashMap from "effect/HashMap";
 import { ServerResponse, IncomingMessage } from "http";

@@ -45,8 +45,8 @@ export const ListFilesZodSchema = z.object({
 });
 
 export const ExportFileParams = Schema.Struct({
-  fileId: Schema.String.pipe(Schema.optional),
-  mimeType: Schema.String.pipe(Schema.optional),
+  fileId: Schema.String,
+  mimeType: Schema.String,
 });
 export type ExportFileParams = typeof ExportFileParams.Type;
 
@@ -61,7 +61,7 @@ export const ExportFileSchema = z.object({
 
 export type GetFileParams = typeof GetFileParams.Type;
 export const GetFileParams = Schema.Struct({
-  fileId: Schema.String.pipe(Schema.optional),
+  fileId: Schema.String,
   mimeType: Schema.String.pipe(Schema.optional),
 });
 

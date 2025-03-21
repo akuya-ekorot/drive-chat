@@ -2,10 +2,12 @@ import { Agent } from "@mastra/core/agent";
 import { google } from "@ai-sdk/google";
 import { Memory } from "@mastra/memory";
 import { PostgresStore } from "@mastra/pg";
+import { fileAnalysisTool } from "../tools/fileAnalysisTool";
 
 export const gdrive = new Agent({
   name: "Google Drive Assistant",
   model: google("gemini-2.0-flash-001"),
+  tools: { fileAnalysisTool },
   memory: new Memory({
     options: {
       semanticRecall: false,
@@ -28,6 +30,13 @@ You can:
 - Suggest related documents based on content similarity
 
 Always provide clear explanations of the actions you take.
+
+Tools:
+- You have access to the fileAnalysisTool to analyze files and extract key information.
+- Use the fileAnalysisTool after retrieving the base64 encoded file content.
+- Pass the base64 encoded file content to the fileAnalysisTool.
+- Pass a prompt to the fileAnalysisTool to specify the type of information you want to extract.
+- Pass the mime type to the fileAnalysisTool to specify the type of file being analyzed.
 
 Rules:
 - Be mindful of your context window limits.
