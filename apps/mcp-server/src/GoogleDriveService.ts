@@ -14,13 +14,14 @@ export class GoogleDriveService extends Effect.Service<GoogleDriveService>()(
           Effect.gen(function* () {
             const apiKey = yield* Config.string("GOOGLE_API_KEY");
 
-            const auth = new google.auth.OAuth2({
-              apiKey,
+            yield* Effect.log(`Authenticating drive with API key ${apiKey}`);
+
+            drive = google.drive({
+              version: "v3",
+              auth: token,
+              key: apiKey,
+              params: { key: apiKey },
             });
-
-            auth.setCredentials({ access_token: token });
-
-            drive = google.drive({ version: "v3", auth });
 
             return drive;
           }).pipe(

@@ -5,7 +5,7 @@ import { DriveError, McpTaggedError } from "./Errors";
 import { McpRepository } from "./McpRepository";
 import * as HttpApi from "@effect/platform/HttpApi";
 import { McpServerService } from "./McpServerService";
-import { GoogleDriveService } from "./GoogleDriveService";
+// import { GoogleDriveService } from "./GoogleDriveService";
 import { McpTransportService, TransportError } from "./McpTransportService";
 import * as HttpApiGroup from "@effect/platform/HttpApiGroup";
 import * as HttpApiBuilder from "@effect/platform/HttpApiBuilder";
@@ -18,6 +18,8 @@ import {
 import { RedisError, RedisService } from "./RedisService";
 import { Effect } from "effect";
 import * as HttpMiddleware from "@effect/platform/HttpMiddleware";
+import { GoogleDriveClient } from "./GoogleDriveClient";
+import { FetchHttpClient } from "@effect/platform";
 
 // Endpoints
 const SseEndpoint = HttpApiEndpoint.get("sse")`/sse`
@@ -55,8 +57,10 @@ const McpGroupLive = HttpApiBuilder.group(McpApi, "McpGroup", (handlers) =>
   Layer.provide(McpRepository.Default),
   Layer.provide(McpTransportService.Default),
   Layer.provide(McpServerService.Default),
-  Layer.provide(GoogleDriveService.Default),
+  Layer.provide(GoogleDriveClient.Default),
+  // Layer.provide(GoogleDriveService.Default),
   Layer.provide(RedisService.Default),
+  Layer.provide(FetchHttpClient.layer),
 );
 
 // Live Api
