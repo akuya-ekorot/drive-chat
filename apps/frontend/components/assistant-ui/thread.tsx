@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ActionBarPrimitive,
   BranchPickerPrimitive,
@@ -262,7 +264,7 @@ const BranchPicker: FC<BranchPickerPrimitive.Root.Props> = ({
       hideWhenSingleBranch
       className={cn(
         "text-muted-foreground inline-flex items-center text-xs",
-        className
+        className,
       )}
       {...rest}
     >

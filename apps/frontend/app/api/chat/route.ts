@@ -4,7 +4,7 @@ import { createMcpConfig } from "@/mastra/mcp-config";
 import { auth, clerkClient } from "@clerk/nextjs/server";
 
 export async function POST(req: NextRequest) {
-  const { messages } = await req.json();
+  const { messages, threadId } = await req.json();
   const { userId } = await auth();
 
   if (!userId) {
@@ -32,8 +32,8 @@ export async function POST(req: NextRequest) {
   const gdriveAgent = mastra.getAgent("gdrive");
 
   const response = await gdriveAgent.stream([messages.at(-1)], {
+    threadId,
     resourceId: userId,
-    threadId: crypto.randomUUID(),
     toolChoice: "auto",
     toolsets: await mcpConfig.getToolsets(),
     memoryOptions: {
