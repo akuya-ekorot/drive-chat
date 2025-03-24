@@ -1,12 +1,11 @@
+import { Thread } from "@/components/assistant-ui/thread";
 import { AssistantProvider } from "@/components/custom/assistant-runtime-provider";
 import { gdrive } from "@/mastra/agents/gdrive";
 import { ThreadMessageLike } from "@assistant-ui/react";
 
-export default async function ThreadLayout({
-  children,
+export default async function Page({
   params,
 }: {
-  children: React.ReactNode;
   params: Promise<{ threadId: string }>;
 }) {
   const { threadId } = await params;
@@ -17,6 +16,10 @@ export default async function ThreadLayout({
   ) as ThreadMessageLike[];
 
   return (
-    <AssistantProvider initialMessages={messages}>{children}</AssistantProvider>
+    <AssistantProvider initialMessages={messages}>
+      <div className="h-dvh w-full">
+        <Thread />
+      </div>
+    </AssistantProvider>
   );
 }

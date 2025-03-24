@@ -5,7 +5,7 @@ import { useAction } from "next-safe-action/hooks";
 import { useForm } from "@tanstack/react-form";
 import type { StorageThreadType } from "@mastra/core";
 import { Button } from "../ui/button";
-import { ListChecks, MoreHorizontal, Plus, Trash, X } from "lucide-react";
+import { ListChecks, Plus, Trash, X } from "lucide-react";
 import {
   SidebarGroup,
   SidebarGroupAction,
@@ -15,7 +15,6 @@ import {
   SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSubButton,
 } from "../ui/sidebar";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -151,7 +150,7 @@ export const ThreadListActions: React.FC<ThreadListActionsProps> = ({
                 </span>
               </SidebarGroupAction>
               <SidebarGroupAction title="New chat" asChild>
-                <Link href="/chat/new">
+                <Link href="/">
                   <Plus />
                   <span className="sr-only">Create new chat</span>
                 </Link>

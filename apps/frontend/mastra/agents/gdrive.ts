@@ -1,21 +1,16 @@
 import { Agent } from "@mastra/core/agent";
 import { google } from "@ai-sdk/google";
-import { Memory } from "@mastra/memory";
-import { PostgresStore } from "@mastra/pg";
-import { fileAnalysisTool } from "../tools/fileAnalysisTool";
+import { memory } from "../memory";
+import {
+  binaryExtractorTool,
+  textDecoderTool,
+} from "../tools/fileExtractionTools";
 
 export const gdrive = new Agent({
   name: "Google Drive Assistant",
   model: google("gemini-2.0-flash-001"),
-  tools: { fileAnalysisTool },
-  memory: new Memory({
-    options: {
-      semanticRecall: false,
-    },
-    storage: new PostgresStore({
-      connectionString: process.env.DB_URL!,
-    }),
-  }),
+  tools: { textDecoderTool, binaryExtractorTool },
+  memory,
   instructions: `
 You are a helpful Google Drive assistant that can help users with accessing and understanding files in their Google Drive.
 

@@ -1,8 +1,8 @@
 import { Logger, Mastra } from "@mastra/core";
 import { gdrive } from "./agents/gdrive";
-import { fileAnalyst } from "./agents/fileAnalyst";
+import { base64Translator } from "./agents/base64Translater";
 
 export const mastra = new Mastra({
-  agents: { fileAnalyst, gdrive },
+  agents: { base64Translator, gdrive },
   logger: new Logger({ level: "debug" }),
 });

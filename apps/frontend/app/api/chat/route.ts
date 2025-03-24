@@ -30,6 +30,7 @@ export async function POST(req: NextRequest) {
   const mcpConfig = createMcpConfig(accessToken);
 
   const gdriveAgent = mastra.getAgent("gdrive");
+  await mcpConfig.getTools();
 
   const response = await gdriveAgent.stream([messages.at(-1)], {
     threadId,
